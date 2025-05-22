@@ -31,3 +31,5 @@ ln -s rsg shutdown
 `rsg` cannot take command line options in this form, so to specify a timeout, set the `RSG_TIMEOUT` environment variable. For command specific timeouts, set `RSG_<COMMAND>_TIMEOUT`. The precedences of these are:
 
 `-t` > `RSG_<COMMAND>_TIMEOUT` > `RSG_TIMEOUT`.
+
+You might want to have a symlink of `rsg` in your `PATH` to wrap existing commands. To make that possible, `rsg` will search `PATH` and skip over symlink to itself it finds, so it doesn't end up recursively running itself. That is, unless `rsg` is given a absolute or relative path, i.e. if `<command>` contains a slash ('/') character.
